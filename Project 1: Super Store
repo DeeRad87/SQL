@@ -40,11 +40,14 @@ WHERE price>19
 ORDER BY price DESC;
 
 #Use a aggregation function about the price for items in the category of "Kitchen Supplies".
+-- This code needs to be updated because db-fiddle does not show that it is valid and a "Error message" shows, once submitted.****************
 SELECT *, COUNT('Kitchen Supplies')
 From superstore
 ORDER BY item_name;
 
 #Use a aggregation function to show which category or item has the highest stock quantity?
+-- This code needs to be updated because db-fiddle does not show that it is valid and a "Error message" shows, once submitted.****************
+SELECT *, COUNT('Kitchen Supplies')
 SELECT *, MAX(stock_quantity)
 From superstore
 ORDER BY category;
