@@ -1,6 +1,7 @@
 -- Netflix Database Analysis
 
 -- Link to db-fiddle to check any queries or further details/information.
+-- https://www.db-fiddle.com/
 
 -- Also, please note that the SQL dialect used in this Project is: PotgreSQL.
 
@@ -61,6 +62,12 @@ VALUES
     ('s19', 'Adam Salky', 'Freida Pinto| Logan Marshall-Green| Robert John Burke| Megan Elisabeth Kelly| Sarah Minnich| Hayes Hargrove| Mark Sivertsen| Brandon Fierro| Antonio Valles| Clint Obenchain'),
     ('s20', NULL, 'Blanca SuÃ¡rez| IvÃ¡n Marcos| Ã“scar Casas| AdriÃ¡n Lastra| Francesc Garrido| Stefan Weinert| Julia MÃ¶ller| Alicia Chojnowski')
     ;
+
+------------------------------------------------------------------------
+
+-- If you would like to double check the querries provided here, please us the link to db-fiddle provided above to confirm. 
+
+--Examples of PotgreSQL Queries:
 
 -- Question 1: How many movie titles are there in the database? (movies only, not tv shows)
 SELECT count(*)
