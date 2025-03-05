@@ -1,0 +1,14 @@
+-- The data used in the following SQL querries have 6 tables as: AprilSales, customers, FebruarySales, JanuarySales, MarchSales, MaySales.
+
+Unfortunately the data that was used here was a file being utilized by SQLite Studio and cannot be provided via this format.
+
+Here is an example of a Query trying to utilize both 'like' and '%' for specific information.
+
+-- Query: List all the products sold in Los Angeles in February, and include how many of each were sold.
+
+SELECT Product, SUM(quantity)
+FROM BIT_DB.FebSales
+WHERE location like '%Los Angeles%'
+GROUP By Product
+
+-- This results provide data of all the products sold in Los Angeles in the month of February and also shows how many of each product was sold.
