@@ -1,3 +1,11 @@
+-- For this project, I setup a SQL database to create information about items sold at a store and relevant prices.
+This project provides fictional "Super Store" data to test querries and show understanding of them as well.
+
+-- Link to db-fiddle to check any queries or further details/information.
+-- https://www.db-fiddle.com/
+
+-- All the Data used to Query provided below.
+
 CREATE TABLE superstore (
     item_id INTEGER PRIMARY KEY,
     item_name TEXT,
@@ -25,27 +33,31 @@ VALUES
     (14, 'Cutlery Set', 'Kitchen Supplies', 34.50, 40, 4.4),
     (15, 'Cozy Throw Blanket', 'Furnishings', 24.99, 100, 4.2);
 
-#For this project, I setup a SQL database to create information about items sold at a store and relevant prices.
+------------------------------------------------------------------------
 
-#Use a SELECT statement to order the items by price.
+-- If you would like to double check the querries provided here, please us the link to db-fiddle provided above to confirm. 
+
+--Examples of SQL Queries:
+
+-- Use a SELECT statement to order the items by price.
 SELECT item_name, category, price
 From superstore
 WHERE price>19
 ORDER BY price DESC;
 
-#Show a statistic about the item prices.
+-- Show a statistic about the item prices.
 SELECT item_name, category, price
 From superstore
 WHERE price>19
 ORDER BY price DESC;
 
-#Use a aggregation function about the price for items in the category of "Kitchen Supplies".
+-- Use a aggregation function about the price for items in the category of "Kitchen Supplies".
 -- This code needs to be updated because db-fiddle does not show that it is valid and a "Error message" shows, once submitted.****************
 SELECT *, COUNT('Kitchen Supplies')
 From superstore
 ORDER BY item_name;
 
-#Use a aggregation function to show which category or item has the highest stock quantity?
+-- Use a aggregation function to show which category or item has the highest stock quantity?
 -- This code needs to be updated because db-fiddle does not show that it is valid and a "Error message" shows, once submitted.****************
 SELECT *, COUNT('Kitchen Supplies')
 SELECT *, MAX(stock_quantity)
