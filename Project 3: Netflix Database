@@ -1,9 +1,6 @@
 -- Netflix Database Analysis
 
--- Link to db-fiddle to check any queries or further details/information.
--- https://www.db-fiddle.com/
-
--- Also, please note that the SQL dialect used in this Project is: PotgreSQL.
+-- Please note that the SQL dialect used in this Project is: PostgreSQL.
 
 CREATE TABLE netflix_titles_info
     ("show_id" varchar(5), "type" varchar(7), "title" varchar(58), "country" varchar(74), "date_added" timestamp, "release_year" int, "rating" varchar(5), "duration" varchar(9), "listed_in" varchar(74))
@@ -65,9 +62,9 @@ VALUES
 
 ------------------------------------------------------------------------
 
--- If you would like to double check the querries provided here, please us the link to db-fiddle provided above to confirm. 
+-- The following SQL was written to answer specific questions about the content on Netflix:
 
---Examples of PotgreSQL Queries:
+--Examples of PostgreSQL Queries:
 
 -- Question 1: How many movie titles are there in the database? (movies only, not tv shows)
 SELECT count(*)
@@ -76,9 +73,9 @@ WHERE type='Movie';
 -- ^ Answer: 8
 
 -- Question 2: When was the most recent batch of tv shows and/or movies added to the database?
-select max(date(date_added))
+SELECT max(date(date_added))
 FROM "netflix_titles_info";
--- ^ Answer: 2021-09-25
+-- ^ Answer: 2021-09-25  (9/25/21)
 
 -- Question 3: List all the movies and tv shows in alphabetical order.
 SELECT title
@@ -87,9 +84,8 @@ ORDER BY title asc;
 -- ^ Answer: Bangkok Breaking, Blood & Water, Confessions of an Invisible Girl, Crime Stories: India Detectives, Dear White People, Dick Johnson Is Dead, Europe's Most Dangerous Man: Otto Skorzeny in Spain, Falsa identidad, Ganglands, Intrusion, Jaguar, 
 Jailbirds New Orleans, Je Suis Karl, Kota Factory, Midnight Mass, My Little Pony: A New Generation, Sankofa, The Great British Baking Show, The Starling, Vendetta: Truth Lies and The Mafia
 
--- Question 4: Who was the Director for the movie The Starling?
-SELECT
-director
+-- Question 4: Who was the Director for the movie 'The Starling'?
+SELECT director
 FROM "netflix_titles_info" titles
 LEFT JOIN "netflix_people" people
 ON titles.show_id=people.show_id
@@ -97,10 +93,9 @@ WHERE titles.title='The Starling'
 -- ^ Answer: Theodore Melfi
 
 -- Question 5: What is the oldest movie in the database and what year was it made?
+SELECT title, release_year
 FROM "netflix_titles_info"
 WHERE type='Movie'
 ORDER BY release_year asc
 LIMIT 1;
 -- ^ Answer: Sankofa, released: 1993
-
-Fin.
