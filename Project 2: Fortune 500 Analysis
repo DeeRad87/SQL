@@ -67,38 +67,40 @@ VALUES
 
 -- If you would like to double check the querries provided here, please us the link to db-fiddle provided above to confirm. 
 
---Examples of SQL Queries:
+-- Analysis: 
 
---Query #1: How many movie titles are there in the database? (movies only, not tv shows)
-
-SELECT count(*)
-FROM "netflix_titles_info"
-WHERE type='Movie';
-
---Query #2: When was the most recent batch of tv shows and/or movies added to the database?
-
-select max(date(date_added))
-FROM "netflix_titles_info";
-
---Query #3: List all the movies and tv shows in alphabetical order.
-
-SELECT title
-FROM "netflix_titles_info"
-ORDER BY title asc;
-
---Query #4: Who was the Director the for move The Starling?
-
+--Query #1: Assign all the companies in the Healthcare industry as "mother friendly workplace", "acceptable", or "abysmal" based on the maternity leave offered.
+ 
 SELECT
-director
-FROM "netflix_titles_info" titles
-LEFT JOIN "netflix_people" people
-ON titles.show_id=people.show_id
-WHERE titles.title='The Starling'
+company_name,
+CASE 
+  WHEN maternity_leave_weeks >= 10 THEN 'mother friendly workplace'
+  WHEN maternity_leave_weeks >= 8 THEN 'acceptable'
+  ELSE 'abysmal'
+END as mother_friendliness
+FROM fortune_companies
+WHERE industry='Healthcare'
+;
 
---Query #5: What is the oldest movie in the database and what year was it made?
+--Query #2:  Which industries have an average revenue of at least $200 Billion, and what are their avg revenues?
 
-SELECT title, release_year
-FROM "netflix_titles_info"
-WHERE type='Movie'
-ORDER BY release_year asc
-LIMIT 1;
+SELECT industry, ROUND(AVG(revenue),1) as avg_revenue_billions
+FROM fortune_companies
+GROUP BY industry
+HAVING avg_revenue_billions>=200
+;
+
+--Query #3:  Which companies have healthcare benefits *and* at least 20 paid time off days?
+
+SELECT company_name
+FROM fortune_companies
+WHERE paid_time_off_days>20
+AND healthcare_benefits=1
+;
+
+--Query #4: Which company in the Retail industry has the least revenue, and what's their revenue? 
+
+SELECT company_name, min(revenue)
+FROM fortune_companies
+WHERE industry = 'Retail'
+;
