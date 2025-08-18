@@ -52,13 +52,11 @@ WHERE price>19
 ORDER BY price DESC;
 
 -- 3. Use an aggregation function about the price for items in the category of "Kitchen Supplies".
-
 SELECT *, COUNT('Kitchen Supplies')
 From superstore
 ORDER BY item_name;
 
 -- 4. Use an aggregation function to show which category or item has the highest stock quantity?
-
 SELECT item_name, category, stock_quantity
 FROM superstore
 WHERE stock_quantity = (SELECT MAX(stock_quantity) 
