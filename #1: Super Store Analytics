@@ -39,25 +39,25 @@ VALUES
 
 --Examples of SQL Queries:
 
--- #1: Use a SELECT statement to order the items by price.
+-- 1: Use a SELECT statement to order the items by price.
 SELECT item_name, category, price
 From superstore
 WHERE price>19
 ORDER BY price DESC;
 
--- #2: Show a statistic about the item prices.
+-- 2: Show a statistic about the item prices.
 SELECT item_name, category, price
 From superstore
 WHERE price>19
 ORDER BY price DESC;
 
--- #3: Use an aggregation function about the price for items in the category of "Kitchen Supplies".
+-- 3: Use an aggregation function about the price for items in the category of "Kitchen Supplies".
 
 SELECT *, COUNT('Kitchen Supplies')
 From superstore
 ORDER BY item_name;
 
--- #4: Use an aggregation function to show which category or item has the highest stock quantity?
+-- 4: Use an aggregation function to show which category or item has the highest stock quantity?
 
 SELECT item_name, category, stock_quantity
 FROM superstore
