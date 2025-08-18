@@ -31,7 +31,7 @@ FROM store
 where section='bulk'; 
 
 
--- 3. What are the most 5 popular items? 
+-- 3. What are the 5 most popular items? 
 SELECT item, price, popularity
 FROM store
 order by popularity desc
