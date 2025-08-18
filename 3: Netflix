@@ -1,6 +1,6 @@
 -- Netflix Database Analysis
 
--- Please note that the SQL dialect used in this Project is: PostgreSQL.
+-- Note: The SQL dialect used in this Project is: PostgreSQL.
 
 CREATE TABLE netflix_titles_info
     ("show_id" varchar(5), "type" varchar(7), "title" varchar(58), "country" varchar(74), "date_added" timestamp, "release_year" int, "rating" varchar(5), "duration" varchar(9), "listed_in" varchar(74))
