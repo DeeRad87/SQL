@@ -20,20 +20,20 @@ INSERT INTO store VALUES (15, "popcorn", "snacks", 1.99, 47);
 
 ------------------------------------------------------------------------
 
---#1: Display the database ordered by price.
+-- 1: Display the database ordered by price.
 
 SELECT * FROM store
 ORDER BY price desc; 
 
 
---#2: What is the avg price of items in the bulk section? 
+-- 2: What is the avg price of items in the bulk section? 
 
 SELECT AVG(price) "avg bulk item price"
 FROM store
 where section='bulk'; 
 
 
---#3: What are the most 5 popular items? 
+-- 3: What are the most 5 popular items? 
 
 SELECT item, price, popularity
 FROM store
