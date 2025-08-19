@@ -1,4 +1,7 @@
--- In this SQL project, I'm querying a database with multiple tables in it to quantify statistics about customer and order data. 
+-- The data used in the following SQL queries have 6 tables as: AprilSales, customers, FebruarySales, JanuarySales, MarchSales, MaySales.
+
+-- The data that was used here was a file utilized by SQLite Studio and cannot be provided via this format. I'm queries below are to quantify statistics about customer and order data. 
+
 
 -- 1. How many orders were placed in January? 
 SELECT COUNT(orderid)
@@ -26,7 +29,7 @@ AND orderid <> 'Order ID'
 SELECT distinct Product, price
 FROM BIT_DB.JanSales
 WHERE  price in (SELECT min(price) FROM BIT_DB.JanSales)
-#OR 
+-- OR 
 SELECT distinct product, price FROM BIT_DB.JanSales 
 ORDER BY price ASC LIMIT 1
 
@@ -37,21 +40,27 @@ FROM BIT_DB.JanSales
 GROUP BY product
 
 -- 6. Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
-SELECT 
-SUM(Quantity), 
+select 
+sum(Quantity), 
 product, 
-SUM(quantity)*price as revenue
+sum(quantity)*price as revenue
 FROM BIT_DB.FebSales 
 WHERE location = '548 Lincoln St, Seattle, WA 98101'
 GROUP BY product
 
 -- 7. How many customers ordered more than 2 products at a time, and what was the average amount spent for those customers? 
-SELECT 
-COUNT(distinct cust.acctnum), 
-AVG(quantity*price)
+select 
+count(distinct cust.acctnum), 
+avg(quantity*price)
 FROM BIT_DB.FebSales Feb
 LEFT JOIN BIT_DB.customers cust
 ON FEB.orderid=cust.order_id
 WHERE Feb.Quantity>2
 AND length(orderid) = 6 
 AND orderid <> 'Order ID'
+
+-- 8. List all the products sold in Los Angeles in February, and include how many of each were sold.
+SELECT Product, SUM(quantity)
+FROM BIT_DB.FebSales
+WHERE location like '%Los Angeles%'
+GROUP By Product
